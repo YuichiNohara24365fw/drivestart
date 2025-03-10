@@ -20,7 +20,7 @@ interface KoubanHyouGroupProps {
   onEditColor: () => void;
   editingColor: boolean;
   onColorChange: (color: string) => void;
-  onAddEntry: () => void;
+  onAddEntry: (sourceEntry?: CutEntry) => void;
   onUpdateEntry: (entryId: string, field: keyof CutEntry, value: any) => void;
   onDeleteEntry: (entryId: string) => void;
   onAssignStaff: (entryId: string, assignment: StaffAssignment) => void;

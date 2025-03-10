@@ -4,12 +4,13 @@ import { sampleEpisodes } from '../data/sampleData';
 import { useKoubanHyou } from '../hooks/useKoubanHyou';
 import KoubanHyouHeader from './koubanhyou/KoubanHyouHeader';
 import KoubanHyouGroup from './koubanhyou/KoubanHyouGroup';
+import KoubanHyouOverview from './koubanhyou/KoubanHyouOverview';
 import StaffKoubanHyou from './StaffKoubanHyou';
 
 const KoubanHyouInput: React.FC = () => {
   const { id } = useParams();
   const episode = id ? sampleEpisodes.find(ep => ep.id === id) : null;
-  const [activeTab, setActiveTab] = useState<'setting' | 'staff'>('setting');
+  const [activeTab, setActiveTab] = useState<'setting' | 'staff' | 'overview'>('setting');
   const {
     cutGroups,
     expandedGroups,
@@ -25,7 +26,8 @@ const KoubanHyouInput: React.FC = () => {
     deleteEntry,
     assignStaff,
     removeStaffAssignment,
-    exportToExcel
+    exportToExcel,
+    reorderEntries
   } = useKoubanHyou(id);
 
   const handleGroupToggle = (groupId: string) => {
@@ -65,7 +67,7 @@ const KoubanHyouInput: React.FC = () => {
                 updateGroup(group.id, 'backgroundColor', color);
                 setEditingColor(null);
               }}
-              onAddEntry={() => addEntry(group.id)}
+              onAddEntry={(sourceEntry) => addEntry(group.id, sourceEntry)}
               onUpdateEntry={(entryId, field, value) => updateEntry(group.id, entryId, field, value)}
               onDeleteEntry={(entryId) => deleteEntry(group.id, entryId)}
               onAssignStaff={(entryId, assignment) => assignStaff(group.id, entryId, assignment)}
@@ -73,8 +75,10 @@ const KoubanHyouInput: React.FC = () => {
             />
           ))}
         </div>
-      ) : (
+      ) : activeTab === 'staff' ? (
         <StaffKoubanHyou episodeId={id} />
+      ) : (
+        <KoubanHyouOverview cutGroups={cutGroups} />
       )}
     </div>
   );

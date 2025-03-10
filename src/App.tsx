@@ -16,7 +16,7 @@ import CutManagementPage from './pages/CutManagementPage';
 import CutProgressPage from './pages/CutProgressPage';
 import StaffDetailPage from './pages/StaffDetailPage';
 import KoubanHyouList from './components/KoubanHyouList';
-import KoubanHyouInput from './components/koubanhyou/KoubanHyouInput';
+import KoubanHyouInput from './components/KoubanHyouInput';
 import KoubanHyouOverviewPage from './pages/KoubanHyouOverviewPage';
 import CharacterSettings from './pages/CharacterSettings';
 
@@ -36,18 +36,18 @@ function App() {
                 <Breadcrumb />
                 <Routes>
                   <Route path="/" element={<DashboardPage />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/staff" element={<Staff />} />
-              <Route path="/staff/:staffId" element={<StaffDetailPage />} />
-              <Route path="/schedule" element={<SchedulePage />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/cut-sheet" element={<CutSheetPage />} />
-              <Route path="/cut-management" element={<CutManagementPage />} />
-              <Route path="/cut-progress" element={<CutProgressPage />} />
-              <Route path="/kouban-hyou" element={<KoubanHyouList />} />
-              <Route path="/kouban-hyou/new" element={<KoubanHyouInput />} />
-              <Route path="/kouban-hyou/:id" element={<KoubanHyouInput />} />
-              <Route path="/kouban-hyou/:id/overview" element={<KoubanHyouOverviewPage />} />
+                  <Route path="/projects" element={<Projects />} />
+                  <Route path="/staff" element={<Staff />} />
+                  <Route path="/staff/:staffId" element={<StaffDetailPage />} />
+                  <Route path="/schedule" element={<SchedulePage />} />
+                  <Route path="/settings" element={<Settings />} />
+                  <Route path="/cut-sheet" element={<CutSheetPage />} />
+                  <Route path="/cut-management" element={<CutManagementPage />} />
+                  <Route path="/cut-progress" element={<CutProgressPage />} />
+                  <Route path="/kouban-hyou" element={<KoubanHyouList />} />
+                  <Route path="/kouban-hyou/new" element={<KoubanHyouInput />} />
+                  <Route path="/kouban-hyou/:id" element={<KoubanHyouInput />} />
+                  <Route path="/kouban-hyou/:id/overview" element={<KoubanHyouOverviewPage />} />
                   <Route path="/character-settings" element={<CharacterSettings />} />
                 </Routes>
               </main>
